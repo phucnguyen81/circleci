@@ -6,3 +6,4 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run: echo "hello world" # run the `echo` command
+      - run: wget -O ci-samples.zip https://phucknguyen.s3.us-west-2.amazonaws.com/ci-samples.zip # download zip file from s3
