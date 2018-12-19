@@ -2,7 +2,17 @@
 # jobs containing steps that run in sequence
 # workflows define order between jobs
 
-version: 2.0
+version: 2.1
+
+commands:
+  sayhello:
+    description: "A very simple command for demonstration purposes"
+    parameters:
+      to:
+        type: string
+        default: "Hello World"
+    steps:
+      - run: echo << parameters.to >>
 
 jobs:
  Hello-World:
