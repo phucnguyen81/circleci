@@ -1,0 +1,27 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: katalonstudio/katalon
+    environment:
+      # DOWNLOAD_URL: https://phucknguyen-bucket.s3.amazonaws.com/ci-samples-2.zip
+      # COMMAND: katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"
+    steps:
+      - checkout
+      - run:
+          name: Download Project from S3
+          command: |
+            set -o nounset
+            wget -O snapshot.zip $DOWNLOAD_URL
+            apt install -y unzip
+            unzip snapshot.zip -d snapshot
+      - run:
+          name: Execute Katalon
+          command: |
+            set -o nounset
+            cd snapshot/
+            eval "$COMMAND"
+      - store-test_results:
+          path: ./report
+      - store-artifacts:
+          path: ./report
