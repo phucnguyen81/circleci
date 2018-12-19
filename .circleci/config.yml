@@ -6,7 +6,7 @@ version: 2.1
 
 commands:
   sayhello:
-    description: "A very simple command for demonstration purposes"
+    description: "Echo command demonstration purposes"
     parameters:
       to:
         type: string
@@ -19,11 +19,13 @@ jobs:
    docker:
      - image: alpine:3.7
    steps:
+     - sayhello:
+        to: "Hello World"
      - run:
          name: Hello World
          command: |
-           echo 'Hello World!'
            echo 'This is the delivery pipeline'
+           echo 'More jobs will run after this'
  I-Have-Code:
    docker:
      - image: alpine:3.7
