@@ -14,7 +14,7 @@ $ErrorActionPreference = "Stop"
 
 $uriBase = "https://circleci.com/api/v1.1/project/github"
 $username = "phucnguyen81"
-$project = "ci-samples"
+$project = "circleci"
 $uri = "${uriBase}/${username}/${project}?circle-token=${token}"
 
 $headers = @{
