@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Where am I?
           command: |
-            echo $(pws)
+            echo $(pwd)
       - run:
           name: Test personal token
           command: |
