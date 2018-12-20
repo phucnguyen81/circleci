@@ -28,3 +28,7 @@ jobs:
           name: Test personal token
           command: |
             curl https://circleci.com/api/v1.1/me?circle-token=$PERSONAL_API_TOKEN
+      - run:
+          name: Show projects
+          command: |
+            curl https://circleci.com/api/v1.1/projects?circle-token=$PERSONAL_API_TOKEN
