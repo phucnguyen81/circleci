@@ -9,7 +9,12 @@ jobs:
     docker:
       - image: ubuntu
     steps:
+      - checkout
       - run:
           name: Where am I?
           command: |
-            echo $(pwd)
+            echo $(pws)
+      - run:
+          name: Test personal token
+          command: |
+            curl https://circleci.com/api/v1.1/me?circle-token=$PERSONAL_API_TOKEN

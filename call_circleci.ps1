@@ -1,6 +1,5 @@
 # Kick off a build on circleci
 
-# Script parameters
 param (
   [string]$token = $env:CIRCLECI_TOKEN
 )
@@ -23,8 +22,7 @@ $headers = @{
 
 $body = @{
   build_parameters = @{
-    DOWNLOAD_URL = 'https://phucknguyen-bucket.s3.amazonaws.com/ci-samples-2.zip'
-    COMMAND = 'katalon-execute.sh -browserType="Chrome" -retry=0 -statusDelay=15 -testSuitePath="Test Suites/TS_RegressionTest"'
+    personal_api_token = "$token"
   }
 }
 
