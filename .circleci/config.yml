@@ -1,6 +1,6 @@
-# jobs are unit of work each runs in its own container
-# jobs containing steps that run in sequence
-# workflows define order between jobs
+# jobs are unit of work, each job runs in its own container/process
+# jobs containing steps, steps run in sequence
+# workflows co-ordinate jobs
 
 version: 2.1
 
@@ -46,3 +46,9 @@ jobs:
           reponame="${CIRCLE_PROJECT_REPONAME}"
           prevbuild="${CIRCLE_PREVIOUS_BUILD_NUM}"
           curl "https://circleci.com/api/v1.1/project/github/${username}/${reponame}/${prevbuild}"
+
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
