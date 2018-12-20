@@ -10,6 +10,11 @@ jobs:
       - image: ubuntu
     steps:
       - checkout
+      - run: 
+          name: Test required environment variables
+          command: |
+            set -o nounset
+            echo 'Api token: $PERSONAL_API_TOKEN'
       - run:
           name: Where am I?
           command: |
