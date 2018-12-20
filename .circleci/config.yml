@@ -45,4 +45,4 @@ jobs:
             username="${CIRCLE_PROJECT_USERNAME}"
             reponame="${CIRCLE_PROJECT_REPONAME}"
             prevbuild="${CIRCLE_PREVIOUS_BUILD_NUM}"
-            curl https://circleci.com/api/v1.1/project/github/${username}/${reponame}/envvar?circle-token=${$PERSONAL_API_TOKEN}
+            curl https://circleci.com/api/v1.1/project/github/${username}/${reponame}/envvar?circle-token=${PERSONAL_API_TOKEN}
