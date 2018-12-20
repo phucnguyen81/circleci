@@ -16,6 +16,10 @@ jobs:
             set -o nounset
             echo 'Api token: $PERSONAL_API_TOKEN'
       - run:
+          name: Install required tools
+          command: |
+            apt install curl
+      - run:
           name: Where am I?
           command: |
             echo $(pws)
