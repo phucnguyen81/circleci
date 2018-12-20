@@ -14,7 +14,7 @@ jobs:
           name: Test required environment variables
           command: |
             set -o nounset
-            [[ -v "$PERSONAL_API_TOKEN" ]]
+            [[ ! -z "$PERSONAL_API_TOKEN" ]]
       - run:
           name: Set up required tools
           command: |
