@@ -7,42 +7,42 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: byrnedo/alpine-curl
+    - image: byrnedo/alpine-curl
     steps:
-      - checkout
-      - run: 
-          name: Test required environment variables
-          command: |
-            set -o nounset
-            [[ ! -z "$PERSONAL_API_TOKEN" ]]
-      - run:
-          name: Show environment variables
-          command: |
-            username="${CIRCLE_PROJECT_USERNAME}"
-            reponame="${CIRCLE_PROJECT_REPONAME}"
-            prevbuild="${CIRCLE_PREVIOUS_BUILD_NUM}"
-            curl https://circleci.com/api/v1.1/project/github/${username}/${reponame}/envvar?circle-token=${PERSONAL_API_TOKEN}
-      - run:
-          name: Set up required tools
-          command: |
-            apk update
-            apk upgrade curl
-      - run:
-          name: Current working directory
-          command: |
-            echo $(pwd)
-      - run:
-          name: Test personal token
-          command: |
-            curl https://circleci.com/api/v1.1/me?circle-token=$PERSONAL_API_TOKEN
-      - run:
-          name: Show projects
-          command: |
-            curl https://circleci.com/api/v1.1/projects?circle-token=$PERSONAL_API_TOKEN
-      - run:
-          name: Details of previous build
-          command: |
-            username="${CIRCLE_PROJECT_USERNAME}"
-            reponame="${CIRCLE_PROJECT_REPONAME}"
-            prevbuild="${CIRCLE_PREVIOUS_BUILD_NUM}"
-            curl "https://circleci.com/api/v1.1/project/github/${username}/${reponame}/${prevbuild}"
+    - checkout
+    - run: 
+        name: Test required environment variables
+        command: |
+          set -o nounset
+          [[ ! -z "$PERSONAL_API_TOKEN" ]]
+    - run:
+        name: Show environment variables
+        command: |
+          username="${CIRCLE_PROJECT_USERNAME}"
+          reponame="${CIRCLE_PROJECT_REPONAME}"
+          prevbuild="${CIRCLE_PREVIOUS_BUILD_NUM}"
+          curl https://circleci.com/api/v1.1/project/github/${username}/${reponame}/envvar?circle-token=${PERSONAL_API_TOKEN}
+    - run:
+        name: Set up required tools
+        command: |
+          apk update
+          apk upgrade curl
+    - run:
+        name: Current working directory
+        command: |
+          echo $(pwd)
+    - run:
+        name: Test personal token
+        command: |
+          curl https://circleci.com/api/v1.1/me?circle-token=$PERSONAL_API_TOKEN
+    - run:
+        name: Show projects
+        command: |
+          curl https://circleci.com/api/v1.1/projects?circle-token=$PERSONAL_API_TOKEN
+    - run:
+        name: Details of previous build
+        command: |
+          username="${CIRCLE_PROJECT_USERNAME}"
+          reponame="${CIRCLE_PROJECT_REPONAME}"
+          prevbuild="${CIRCLE_PREVIOUS_BUILD_NUM}"
+          curl "https://circleci.com/api/v1.1/project/github/${username}/${reponame}/${prevbuild}"
