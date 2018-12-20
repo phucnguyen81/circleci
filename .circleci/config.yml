@@ -35,4 +35,6 @@ jobs:
       - run:
           name: Build details
           command: |
-            curl "https://circleci.com/api/v1.1/project/github/${CIRCLE_USERNAME}/circleci/1"
+            username="${CIRCLE_PROJECT_USERNAME}"
+            reponame="${CIRCLE_PROJECT_REPONAME}"
+            curl "https://circleci.com/api/v1.1/project/github/${username}/${reponame}/1"
