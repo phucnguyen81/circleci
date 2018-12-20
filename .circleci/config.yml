@@ -16,10 +16,10 @@ jobs:
             set -o nounset
             echo 'Api token: $PERSONAL_API_TOKEN'
       - run:
-          name: Install required tools
+          name: Set up required tools
           command: |
-            apt-get update
-            apt-get install curl
+            apk update
+            apk upgrade curl
       - run:
           name: Where am I?
           command: |
