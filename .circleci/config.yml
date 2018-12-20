@@ -37,4 +37,5 @@ jobs:
           command: |
             username="${CIRCLE_PROJECT_USERNAME}"
             reponame="${CIRCLE_PROJECT_REPONAME}"
-            curl "https://circleci.com/api/v1.1/project/github/${username}/${reponame}/1"
+            nodeindex="${CIRCLE_NODE_INDEX}"
+            curl "https://circleci.com/api/v1.1/project/github/${username}/${reponame}/${nodeindex}"
