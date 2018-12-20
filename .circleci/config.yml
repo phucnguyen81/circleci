@@ -33,9 +33,16 @@ jobs:
           command: |
             curl https://circleci.com/api/v1.1/projects?circle-token=$PERSONAL_API_TOKEN
       - run:
-          name: Build details
+          name: Details of previous build
           command: |
             username="${CIRCLE_PROJECT_USERNAME}"
             reponame="${CIRCLE_PROJECT_REPONAME}"
             prevbuild="${CIRCLE_PREVIOUS_BUILD_NUM}"
             curl "https://circleci.com/api/v1.1/project/github/${username}/${reponame}/${prevbuild}"
+      - run:
+          name: Environment variables
+          command: |
+            username="${CIRCLE_PROJECT_USERNAME}"
+            reponame="${CIRCLE_PROJECT_REPONAME}"
+            prevbuild="${CIRCLE_PREVIOUS_BUILD_NUM}"
+            curl https://circleci.com/api/v1.1/project/github/${username}/${reponame}/envvar?circle-token=${$PERSONAL_API_TOKEN}
