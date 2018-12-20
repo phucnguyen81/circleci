@@ -28,7 +28,7 @@ jobs:
             apk update
             apk upgrade curl
       - run:
-          name: Where am I?
+          name: Current working directory
           command: |
             echo $(pwd)
       - run:
